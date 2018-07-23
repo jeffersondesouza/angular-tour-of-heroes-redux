@@ -12,7 +12,8 @@ import { AppRoutingModule } from './/app-routing.module';
 
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
-import { MessagesComponent } from './shared/messages/messages.component';
+import { MessagesComponent } from './shared/components/messages/messages.component';
+import { CoreModule } from './core/core.module';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,9 @@ import { MessagesComponent } from './shared/messages/messages.component';
 
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, { dataEncapsulation: false }
-    )
+    ),
+
+    CoreModule
   ],
   providers: [HeroService, MessageService],
   bootstrap: [AppComponent]
