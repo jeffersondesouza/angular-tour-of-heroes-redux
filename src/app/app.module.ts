@@ -1,8 +1,12 @@
+import { environment } from './../environments/environment';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { AppComponent } from './app.component';
 import { HeroService } from './hero.service';
@@ -29,8 +33,11 @@ import { CoreModule } from './core/core.module';
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, { dataEncapsulation: false }
     ),
-
-    CoreModule
+   /*  StoreModule.forRoot({}),
+    EffectsModule.forRoot([]),
+    !environment.production ? StoreDevtoolsModule.instrument() : [],
+    */ // StoreRouterConnectingModule,
+    CoreModule,
   ],
   providers: [HeroService, MessageService],
   bootstrap: [AppComponent]
