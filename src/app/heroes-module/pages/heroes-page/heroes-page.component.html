@@ -1,3 +1,5 @@
-<p>
-  heroes-page works!
-</p>
+<div class="heroes-page">
+  <h2>My Heroes</h2>
+  <app-add-hero (addHero)="onAddHero($event)"></app-add-hero>
+  <app-heroes [heroes]="(heroes$ | async)"></app-heroes>
+</div>

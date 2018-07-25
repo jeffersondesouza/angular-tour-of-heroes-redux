@@ -1,8 +1,6 @@
-<h2>My Heroes</h2>
-<app-add-hero (addHero)="add($event)"></app-add-hero>
 
 <ul class="heroes">
-  <li *ngFor="let hero of (heroes$ | async)">
+  <li *ngFor="let hero of heroes">
     <a [routerLink]="[hero.id]">
       <span class="badge">{{hero.id}}</span> {{hero.name}}
     </a>
