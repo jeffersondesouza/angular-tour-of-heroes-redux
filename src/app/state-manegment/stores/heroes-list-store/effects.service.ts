@@ -4,7 +4,7 @@ import { Action } from '@ngrx/store';
 import { Actions, Effect } from '@ngrx/effects';
 import { Observable } from 'rxjs/Observable';
 
-import { LOAD_HEROES_REQUEST_ACTION, LoadHeroesSuccesAction } from './actions';
+import * as fromHeroListAction from './actions';
 import { HeroListApiFetcherService } from './hero-list-api-fetcher.service';
 
 @Injectable()
@@ -12,9 +12,16 @@ export class HeroListEffectsService {
 
   @Effect()
   loadHeroesRequest: Observable<Action> = this.actions$
-    .ofType(LOAD_HEROES_REQUEST_ACTION)
+    .ofType(fromHeroListAction.LOAD_HEROES_REQUEST_ACTION)
     .switchMap(res => this.apiDataFetcher.getHeroes())
-    .map(heroes => new LoadHeroesSuccesAction(heroes));
+    .map(heroes => new fromHeroListAction.LoadHeroesSuccesAction(heroes));
+
+
+  @Effect()
+  deleteHeroRequest: Observable<Action> = this.actions$
+    .ofType(fromHeroListAction.DELETE_HERO_REQUEST_ACTION)
+    .switchMap((action: fromHeroListAction.DeleteHeroRequestAction) => this.apiDataFetcher.deleteHero(action.payload))
+    .map(res => new fromHeroListAction.LoadHeroesRequesAction());
 
   constructor(
     private actions$: Actions,

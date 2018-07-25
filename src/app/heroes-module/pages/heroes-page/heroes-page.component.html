@@ -1,5 +1,8 @@
 <div class="heroes-page">
   <h2>My Heroes</h2>
   <app-add-hero (addHero)="onAddHero($event)"></app-add-hero>
-  <app-heroes [heroes]="(heroes$ | async)"></app-heroes>
+  <app-heroes
+    [heroes]="(heroes$ | async)"
+    [isDeletingHero]="(isDeletingHero$) | async"
+    (deleteHero)="onDeleteHero($event)"></app-heroes>
 </div>

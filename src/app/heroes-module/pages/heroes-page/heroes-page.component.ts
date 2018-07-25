@@ -3,7 +3,7 @@ import { Hero } from './../../../hero';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
-import { LoadHeroesRequesAction } from '../../../state-manegment/stores';
+import { LoadHeroesRequesAction, DeleteHeroRequestAction } from '../../../state-manegment/stores';
 
 @Component({
   selector: 'app-heroes-page',
@@ -13,6 +13,7 @@ import { LoadHeroesRequesAction } from '../../../state-manegment/stores';
 export class HeroesPageComponent implements OnInit {
 
   heroes$: Observable<Hero[]>;
+  isDeletingHero$: Observable<boolean>;
 
   heroes: Hero[];
 
@@ -20,6 +21,7 @@ export class HeroesPageComponent implements OnInit {
     private store: Store<AppState>
   ) {
     this.heroes$ = store.select(state => state.heroes.heroes);
+    this.isDeletingHero$ = store.select(state => state.heroes.isDeletingHero);
   }
 
 
@@ -37,7 +39,10 @@ export class HeroesPageComponent implements OnInit {
           }); */
   }
 
-  delete(hero: Hero): void {
+  onDeleteHero(hero: Hero): void {
+    console.log(hero);
+    this.store.dispatch(new DeleteHeroRequestAction(hero));
+
     // this.heroes = this.heroes.filter(h => h !== hero);
     //  this.heroService.deleteHero(hero).subscribe();
   }

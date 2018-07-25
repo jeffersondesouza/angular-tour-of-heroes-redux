@@ -11,12 +11,17 @@ export function heroesReducer(state = fromState.initialState, action: ActionsTyp
         ...state
       };
     case ActionsTypes.LOAD_HEROES_SUCCES_ACTION:
-  console.log(state, action);
-
       return {
         ...state,
-        heroes: action.payload
+        heroes: action.payload,
+        isDeletingHero: false,
       };
+    case ActionsTypes.DELETE_HERO_REQUEST_ACTION:
+      return {
+        ...state,
+        isDeletingHero: true,
+      };
+
     default:
       return state;
   }
