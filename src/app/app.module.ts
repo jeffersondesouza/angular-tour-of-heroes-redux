@@ -4,6 +4,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
+import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/map';
+
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -19,8 +22,7 @@ import { InMemoryDataService } from './in-memory-data.service';
 import { MessagesComponent } from './shared/components/messages/messages.component';
 import { CoreModule } from './core/core.module';
 
-import { reducers } from './state-manegment';
-
+import { reducers, effects } from './state-manegment';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,7 @@ import { reducers } from './state-manegment';
       InMemoryDataService, { dataEncapsulation: false }
     ),
     StoreModule.forRoot(reducers),
-    EffectsModule.forRoot([]),
+    EffectsModule.forRoot(effects),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     // StoreRouterConnectingModule,
     CoreModule,

@@ -6,7 +6,7 @@ import { HeroService } from '../../../../hero.service';
 import { Store } from '@ngrx/store';
 
 import { AppState } from './../../../../state-manegment/app.reducers';
-import { LoadHeroesAction, LoadHeroesRequesAction } from '../../../../state-manegment/stores';
+import { LoadHeroesRequesAction } from '../../../../state-manegment/stores';
 
 @Component({
   selector: 'app-heroes',
@@ -15,17 +15,15 @@ import { LoadHeroesAction, LoadHeroesRequesAction } from '../../../../state-mane
 })
 export class HeroesComponent implements OnInit {
 
-  heroesState$: Observable<{ heroes }>;
+  heroes$: Observable<Hero[]>;
 
   heroes: Hero[];
-
 
   constructor(
     private heroService: HeroService,
     private store: Store<AppState>
   ) {
-
-    this.heroesState$ = store.select('heroes');
+    this.heroes$ = store.select(state => state.heroes.heroes);
   }
 
 

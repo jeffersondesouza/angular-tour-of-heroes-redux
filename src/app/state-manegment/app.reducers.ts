@@ -10,3 +10,7 @@ export const reducers: ActionReducerMap<AppState> = {
   heroes: fromHeroesListStore.heroesReducer
 };
 
+export const effects = [
+  fromHeroesListStore.HeroListEffectsService
+];
+
