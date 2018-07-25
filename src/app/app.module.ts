@@ -19,6 +19,9 @@ import { InMemoryDataService } from './in-memory-data.service';
 import { MessagesComponent } from './shared/components/messages/messages.component';
 import { CoreModule } from './core/core.module';
 
+import { reducers } from './state-manegment';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,10 +36,10 @@ import { CoreModule } from './core/core.module';
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, { dataEncapsulation: false }
     ),
-   /*  StoreModule.forRoot({}),
+    StoreModule.forRoot(reducers),
     EffectsModule.forRoot([]),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
-    */ // StoreRouterConnectingModule,
+    // StoreRouterConnectingModule,
     CoreModule,
   ],
   providers: [HeroService, MessageService],
