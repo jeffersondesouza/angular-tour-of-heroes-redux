@@ -2,11 +2,11 @@ import { Hero } from './../../../hero';
 import { Action } from '@ngrx/store';
 
 
-export const LOAD_HEROES = 'LOAD_HEROES';
+export const LOAD_HEROES_REQUEST_ACTION = 'LOAD_HEROES_REQUEST_ACTION';
 
-export class LoadHeroesAction implements Action {
-  readonly type = LOAD_HEROES;
-  constructor(public payload: Hero[]) { }
+export class LoadHeroesRequesAction implements Action {
+  readonly type = LOAD_HEROES_REQUEST_ACTION;
+  constructor() { }
 }
 
-export type Actions = LoadHeroesAction;
+export type Actions = LoadHeroesRequesAction;
