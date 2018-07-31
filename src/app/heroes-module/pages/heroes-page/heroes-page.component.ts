@@ -1,9 +1,16 @@
-import { AppState } from './../../../state-manegment/app.reducers';
-import { Hero } from './../../../hero';
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
+
 import { Store } from '@ngrx/store';
-import { LoadHeroesRequesAction, DeleteHeroRequestAction } from '../../../state-manegment/stores';
+import { Observable } from 'rxjs/Observable';
+
+import {
+  LoadHeroesRequesAction,
+  DeleteHeroRequestAction,
+  HeroesStoreSelectors,
+  RootStoreState
+} from '../../../state-manegment';
+
+import { Hero } from './../../../hero';
 
 @Component({
   selector: 'app-heroes-page',
@@ -14,14 +21,16 @@ export class HeroesPageComponent implements OnInit {
 
   heroes$: Observable<Hero[]>;
   isDeletingHero$: Observable<boolean>;
+  isLoading$: Observable<boolean>;
 
   heroes: Hero[];
 
   constructor(
-    private store: Store<AppState>
+    private store: Store<RootStoreState.AppState>
   ) {
-    this.heroes$ = store.select(state => state.heroes.heroes);
+    this.heroes$ = store.select(HeroesStoreSelectors.selectAllHeroes);
     this.isDeletingHero$ = store.select(state => state.heroes.isDeletingHero);
+    this.isLoading$ = store.select(state => state.heroes.isLoading);
   }
 
   ngOnInit() {
@@ -30,20 +39,11 @@ export class HeroesPageComponent implements OnInit {
 
   onAddHero(name: string): void {
     console.log(name);
-
-    /*     this.heroService.addHero({ name } as Hero)
-          .subscribe(hero => {
-            console.log(hero);
-
-            this.heroes.push(hero);
-          }); */
   }
 
   onDeleteHero(hero: Hero): void {
     console.log(hero);
     this.store.dispatch(new DeleteHeroRequestAction(hero));
 
-    // this.heroes = this.heroes.filter(h => h !== hero);
-    //  this.heroService.deleteHero(hero).subscribe();
   }
 }

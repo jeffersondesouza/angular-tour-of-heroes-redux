@@ -10,6 +10,7 @@ import { Hero } from '../../../../hero';
 export class HeroesComponent {
 
   @Input() heroes: Hero[];
+  @Input() isLoading: boolean;
   @Input() isDeletingHero: boolean;
 
   @Output() deleteHero: EventEmitter<Hero> = new EventEmitter<Hero>();

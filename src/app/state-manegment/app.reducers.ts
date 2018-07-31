@@ -1,4 +1,4 @@
-import { ActionReducerMap } from '@ngrx/store';
+/* import { ActionReducerMap } from '@ngrx/store';
 
 import * as fromHeroesListStore from './stores';
 
@@ -14,3 +14,4 @@ export const effects = [
   fromHeroesListStore.HeroListEffectsService
 ];
 
+ */

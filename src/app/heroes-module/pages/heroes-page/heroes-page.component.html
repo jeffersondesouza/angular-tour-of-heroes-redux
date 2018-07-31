@@ -4,5 +4,6 @@
   <app-heroes
     [heroes]="(heroes$ | async)"
     [isDeletingHero]="(isDeletingHero$) | async"
+    [isLoading]="(isLoading$) | async"
     (deleteHero)="onDeleteHero($event)"></app-heroes>
 </div>

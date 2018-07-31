@@ -1,6 +1,11 @@
 <div *ngIf="isDeletingHero">
   <strong>DELETEING...</strong>
 </div>
+<div *ngIf="isLoading && !isDeletingHero">
+  <strong>Loading Heroes...</strong>
+</div>
+
+
 <ul class="heroes">
   <li *ngFor="let hero of heroes">
     <a [routerLink]="[hero.id]">

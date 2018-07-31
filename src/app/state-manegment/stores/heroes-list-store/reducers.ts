@@ -19,12 +19,14 @@ export function heroesReducer(state = fromState.initialState, action: ActionsTyp
       return {
         ...state,
         heroes: action.payload,
-        isLoading: false
+        isLoading: false,
+        isDeletingHero: false,
       };
     case ActionsTypes.LOAD_FAILURE_ACTION:
       return {
         ...state,
-        isLoading: false
+        isLoading: false,
+        isDeletingHero: false,
       };
     case ActionsTypes.DELETE_REQUEST_ACTION:
       return {
