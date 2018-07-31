@@ -4,24 +4,43 @@ import * as ActionsTypes from './actions';
 
 
 export function heroesReducer(state = fromState.initialState, action: ActionsTypes.Actions) {
+  console.log({
+    state,
+    action
+  });
 
   switch (action.type) {
-    case ActionsTypes.LOAD_HEROES_REQUEST_ACTION:
+    case ActionsTypes.LOAD_REQUEST_ACTION:
       return {
-        ...state
+        ...state,
+        isLoading: true
       };
-    case ActionsTypes.LOAD_HEROES_SUCCES_ACTION:
+    case ActionsTypes.LOAD_SUCCESS_ACTION:
       return {
         ...state,
         heroes: action.payload,
-        isDeletingHero: false,
+        isLoading: false
       };
-    case ActionsTypes.DELETE_HERO_REQUEST_ACTION:
+    case ActionsTypes.LOAD_FAILURE_ACTION:
+      return {
+        ...state,
+        isLoading: false
+      };
+    case ActionsTypes.DELETE_REQUEST_ACTION:
       return {
         ...state,
         isDeletingHero: true,
       };
-
+    case ActionsTypes.DELETE_SUCCESS_ACTION:
+      return {
+        ...state,
+        isDeletingHero: false,
+      };
+    case ActionsTypes.DELETE_FAILURE_ACTION:
+      return {
+        ...state,
+        isDeletingHero: false,
+      };
     default:
       return state;
   }

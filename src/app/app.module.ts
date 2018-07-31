@@ -23,6 +23,7 @@ import { MessagesComponent } from './shared/components/messages/messages.compone
 import { CoreModule } from './core/core.module';
 
 import { reducers, effects } from './state-manegment';
+import { RootStoreModule } from './state-manegment/root-store.module';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { reducers, effects } from './state-manegment';
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     // StoreRouterConnectingModule,
     CoreModule,
+    RootStoreModule,
   ],
   providers: [HeroService, MessageService],
   bootstrap: [AppComponent]

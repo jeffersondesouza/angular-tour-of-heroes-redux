@@ -1,6 +1,6 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { HeroListApiFetcherService } from './hero-list-api-fetcher.service';
+import { HeroListApiFetcherService } from '../hero-list-api-fetcher.service';
 
 describe('HeroListApiFetcherService', () => {
   beforeEach(() => {

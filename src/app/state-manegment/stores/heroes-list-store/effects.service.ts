@@ -12,14 +12,14 @@ export class HeroListEffectsService {
 
   @Effect()
   loadHeroesRequest: Observable<Action> = this.actions$
-    .ofType(fromHeroListAction.LOAD_HEROES_REQUEST_ACTION)
+    .ofType(fromHeroListAction.LOAD_REQUEST_ACTION)
     .switchMap(res => this.apiDataFetcher.getHeroes())
     .map(heroes => new fromHeroListAction.LoadHeroesSuccesAction(heroes));
 
 
   @Effect()
   deleteHeroRequest: Observable<Action> = this.actions$
-    .ofType(fromHeroListAction.DELETE_HERO_REQUEST_ACTION)
+    .ofType(fromHeroListAction.DELETE_REQUEST_ACTION)
     .switchMap((action: fromHeroListAction.DeleteHeroRequestAction) => this.apiDataFetcher.deleteHero(action.payload))
     .map(res => new fromHeroListAction.LoadHeroesRequesAction());
 

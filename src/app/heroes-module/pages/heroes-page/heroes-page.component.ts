@@ -24,13 +24,13 @@ export class HeroesPageComponent implements OnInit {
     this.isDeletingHero$ = store.select(state => state.heroes.isDeletingHero);
   }
 
-
   ngOnInit() {
     this.store.dispatch(new LoadHeroesRequesAction());
   }
 
-
   onAddHero(name: string): void {
+    console.log(name);
+
     /*     this.heroService.addHero({ name } as Hero)
           .subscribe(hero => {
             console.log(hero);
