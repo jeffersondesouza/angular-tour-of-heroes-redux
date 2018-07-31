@@ -17,7 +17,6 @@ import { HeroListApiFetcherService } from '../state-manegment/stores/heroes-list
     NavBarComponent
   ],
   providers: [
-    HeroListEffectsService,
     HeroListApiFetcherService,
   ]
 })

@@ -22,8 +22,9 @@ import { InMemoryDataService } from './in-memory-data.service';
 import { MessagesComponent } from './shared/components/messages/messages.component';
 import { CoreModule } from './core/core.module';
 
-import { reducers, effects } from './state-manegment';
-import { RootStoreModule } from './state-manegment/root-store.module';
+// import { reducers, effects } from './state-manegment';
+import { RootStoreModule } from './state-manegment';
+
 
 @NgModule({
   declarations: [
@@ -39,8 +40,8 @@ import { RootStoreModule } from './state-manegment/root-store.module';
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, { dataEncapsulation: false }
     ),
-    StoreModule.forRoot(reducers),
-    EffectsModule.forRoot(effects),
+/*     StoreModule.forRoot(reducers),
+    EffectsModule.forRoot(effects), */
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     // StoreRouterConnectingModule,
     CoreModule,

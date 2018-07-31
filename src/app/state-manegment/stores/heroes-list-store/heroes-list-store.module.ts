@@ -1,10 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+
+import * as reducer from './reducers';
+import { HeroListEffectsService } from './effects.service';
+
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    StoreModule.forFeature('heroes', reducer.heroesReducer),
+    EffectsModule.forFeature([HeroListEffectsService]),
   ],
-  declarations: []
+  providers: [
+    HeroListEffectsService
+  ]
 })
 export class HeroesListStoreModule { }
