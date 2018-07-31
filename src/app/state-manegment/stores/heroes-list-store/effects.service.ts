@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 
 import { Action } from '@ngrx/store';
-import { Actions, Effect } from '@ngrx/effects';
+import { Actions, Effect, ofType } from '@ngrx/effects';
 import { Observable } from 'rxjs/Observable';
+import { catchError, map, startWith, switchMap } from 'rxjs/operators';
 
 import * as fromHeroListAction from './actions';
 import { HeroListApiFetcherService } from './hero-list-api-fetcher.service';
@@ -12,9 +13,17 @@ export class HeroListEffectsService {
 
   @Effect()
   loadHeroesRequest: Observable<Action> = this.actions$
-    .ofType(fromHeroListAction.LOAD_REQUEST_ACTION)
-    .switchMap(res => this.apiDataFetcher.getHeroes())
-    .map(heroes => new fromHeroListAction.LoadHeroesSuccesAction(heroes));
+    .pipe(
+      ofType<fromHeroListAction.LoadHeroesRequesAction>(fromHeroListAction.LOAD_REQUEST_ACTION),
+      startWith(new fromHeroListAction.LoadHeroesRequesAction()),
+      switchMap(action =>
+        this.apiDataFetcher.getHeroes()
+          .pipe(
+            map(heroes => new fromHeroListAction.LoadHeroesSuccesAction(heroes)),
+            catchError(error => Observable.of(new fromHeroListAction.LoadHeroesFailureAction({ error })))
+          )
+      )
+    );
 
 
   @Effect()

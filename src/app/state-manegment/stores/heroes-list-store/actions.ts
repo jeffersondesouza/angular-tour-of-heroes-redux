@@ -23,6 +23,8 @@ export class LoadHeroesSuccesAction implements Action {
 
 export class LoadHeroesFailureAction implements Action {
   readonly type = LOAD_FAILURE_ACTION;
+  constructor(public payload: { error }) { }
+
 }
 
 export class DeleteHeroRequestAction implements Action {
