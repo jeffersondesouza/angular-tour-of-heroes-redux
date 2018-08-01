@@ -4,6 +4,9 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { RouterModule } from '@angular/router';
 
 import { HeroListApiFetcherService } from '../state-manegment';
+import { PublicRootRoutesComponent } from './components/public-root-routes/public-root-routes.component';
+import { PrivateRootRoutesComponent } from './components/private-root-routes/private-root-routes.component';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   imports: [
@@ -11,7 +14,10 @@ import { HeroListApiFetcherService } from '../state-manegment';
     RouterModule,
   ],
   declarations: [
-    NavBarComponent
+    NavBarComponent,
+    PublicRootRoutesComponent,
+    PrivateRootRoutesComponent,
+    HomeComponent
   ],
   exports: [
     NavBarComponent
