@@ -1,11 +1,7 @@
-<nav>
-  <a [routerLink]="['heroes']">Heroes</a>
-  <a [routerLink]="['../','../','../','dashboard']">Dashboard</a>
-  <a [routerLink]="['']">Logout</a>
-</nav>
-
-<nav>
-  <a routerLink="heroes">Heroes 2</a>
-  <a routerLink="dashboard">Dashboard 2</a>
-  <a routerLink="">Logout 2</a>
+<nav class="nav-bar">
+  <ul>
+    <a [routerLink]="['/heroes']">Heroes</a>
+    <a [routerLink]="['/dashboard']">Dashboard</a>
+  </ul>
+  <button class="nav-bar--logout" (click)="onLogout()">Logout</button>
 </nav>

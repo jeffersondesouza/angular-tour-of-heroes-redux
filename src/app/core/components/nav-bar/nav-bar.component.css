@@ -1,3 +1,8 @@
+.nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 
 nav a {
   padding: 5px 10px;
@@ -7,13 +12,26 @@ nav a {
   background-color: #eee;
   border-radius: 4px;
 }
-nav a:visited, a:link {
+
+nav a:visited,
+a:link {
   color: #607d8b;
 }
+
 nav a:hover {
   color: #039be5;
   background-color: #cfd8dc;
 }
+
 nav a.active {
   color: #039be5;
+}
+
+nav .nav-bar--logout {
+  background-color: #b9d5e3;
+  font-weight: 600;
+  color: #fff;
+  border: none;
+  padding: 0.3rem;
+  border-radius: 0.3rem;
 }

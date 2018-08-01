@@ -4,18 +4,18 @@ import { PublicRootRoutesComponent } from './core/components/public-root-routes/
 import { HomeComponent } from './core/components/home/home.component';
 import { PrivateRootRoutesComponent } from './core/components/private-root-routes/private-root-routes.component';
 
-/*
 const routes: Routes = [
-  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
-  { path: 'dashboard', loadChildren: 'app/dashboard-module/dashboard.module#DashboardModuleModule' },
-  { path: 'heroes', loadChildren: 'app/heroes-module/heroes-module.module#HeroesModulesModule' },
-];
-
- */
- const routes: Routes = [
+  {
+    path: '', component: PublicRootRoutesComponent,
+    children: [
+      { path: '', redirectTo: '/welcome', pathMatch: 'full' },
+      { path: 'welcome', component: HomeComponent }
+    ]
+  },
   {
     path: '', component: PrivateRootRoutesComponent,
     children: [
+      { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
       { path: 'dashboard', loadChildren: 'app/dashboard-module/dashboard.module#DashboardModuleModule' },
       { path: 'heroes', loadChildren: 'app/heroes-module/heroes-module.module#HeroesModulesModule' },
     ]
