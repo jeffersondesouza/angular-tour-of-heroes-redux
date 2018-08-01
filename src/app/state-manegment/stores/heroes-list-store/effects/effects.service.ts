@@ -5,8 +5,8 @@ import { Actions, Effect, ofType } from '@ngrx/effects';
 import { Observable } from 'rxjs/Observable';
 import { catchError, map, startWith, switchMap } from 'rxjs/operators';
 
-import * as fromHeroListAction from './actions';
-import { HeroListApiFetcherService } from './hero-list-api-fetcher.service';
+import * as fromHeroListAction from './../actions';
+import { HeroListApiFetcherService } from './../api-fetcher/api-fetcher.service';
 
 @Injectable()
 export class HeroListEffectsService {

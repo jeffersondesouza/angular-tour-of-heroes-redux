@@ -1,4 +1,4 @@
-import { Hero } from './../../../hero';
+import { Hero } from './../../../../hero';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
@@ -6,7 +6,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 
 import { catchError, tap } from 'rxjs/operators';
-import { MessageService } from '../../../message.service';
+import { MessageService } from '../../../../message.service';
 
 @Injectable()
 export class HeroListApiFetcherService {

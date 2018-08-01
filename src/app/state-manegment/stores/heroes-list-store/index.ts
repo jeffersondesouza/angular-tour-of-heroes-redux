@@ -4,9 +4,10 @@ import * as HeroesStoreSelectors from './selectors/index';
 
 
 export * from './actions';
+export * from './api-fetcher';
 export * from './state';
-export * from './reducers';
-export * from './effects.service';
+export * from './reducers/reducers';
+export * from './effects/effects.service';
 
 export {
   HeroesListStoreModule

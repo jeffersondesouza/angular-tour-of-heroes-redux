@@ -11,6 +11,3 @@ export const initialState: State = {
   isDeletingHero: false,
   isLoading: false,
 };
-
-
-

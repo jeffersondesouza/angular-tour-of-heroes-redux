@@ -1,6 +1,6 @@
 
-import * as fromState from './state';
-import * as ActionsTypes from './actions';
+import * as fromState from './../state';
+import * as ActionsTypes from './../actions';
 
 
 export function heroesReducer(state = fromState.initialState, action: ActionsTypes.Actions) {
