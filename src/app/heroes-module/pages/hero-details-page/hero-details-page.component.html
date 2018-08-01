@@ -1,3 +1,5 @@
-<p>
-  hero-details-page works!
-</p>
+<div *ngIf="hero">
+  <app-hero-detail-ui [hero]="hero"></app-hero-detail-ui>
+  <button (click)="goBack()">go back</button>
+  <button (click)="save()">save</button>
+</div>
