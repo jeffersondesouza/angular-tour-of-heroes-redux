@@ -1,5 +1,11 @@
 <nav>
-  <a routerLink="heroes">Heroes</a>
-  <a routerLink="dashboard">Dashboard</a>
-  <a routerLink="welcome">Logout</a>
+  <a [routerLink]="['heroes']">Heroes</a>
+  <a [routerLink]="['../','../','../','dashboard']">Dashboard</a>
+  <a [routerLink]="['']">Logout</a>
+</nav>
+
+<nav>
+  <a routerLink="heroes">Heroes 2</a>
+  <a routerLink="dashboard">Dashboard 2</a>
+  <a routerLink="">Logout 2</a>
 </nav>

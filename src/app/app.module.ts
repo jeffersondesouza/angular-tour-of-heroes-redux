@@ -19,7 +19,6 @@ import { AppRoutingModule } from './/app-routing.module';
 
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
-import { MessagesComponent } from './shared/components/messages/messages.component';
 import { CoreModule } from './core/core.module';
 
 // import { reducers, effects } from './state-manegment';
@@ -29,7 +28,6 @@ import { RootStoreModule } from './state-manegment';
 @NgModule({
   declarations: [
     AppComponent,
-    MessagesComponent
   ],
   imports: [
     BrowserModule,
