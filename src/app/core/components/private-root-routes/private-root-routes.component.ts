@@ -1,4 +1,7 @@
+import { Observable } from 'rxjs/Observable';
+import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-private-root-routes',
@@ -7,9 +10,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PrivateRootRoutesComponent implements OnInit {
 
-  constructor() { }
+  tenancyUrlParam$: Observable<string>;
 
-  ngOnInit() {
+  constructor(
+    private route: ActivatedRoute,
+  ) { }
+
+  ngOnInit(): void {
+    console.log(this.route);
+
+    this.tenancyUrlParam$ = this.route.params.pipe(
+      map(params => params.tenancy)
+    );
+
+
+
   }
 
 }

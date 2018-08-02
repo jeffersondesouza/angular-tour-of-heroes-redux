@@ -10,6 +10,7 @@ import { HomeComponent } from './components/home/home.component';
 import { MessagesComponent } from './components/messages/messages.component';
 import { PublicRootRoutesModule } from './modules/public-root-routes.module';
 import { PrivateRootRoutesModule } from './modules/private-root-routes.module';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   imports: [
@@ -23,7 +24,8 @@ import { PrivateRootRoutesModule } from './modules/private-root-routes.module';
     PublicRootRoutesComponent,
     PrivateRootRoutesComponent,
     HomeComponent,
-    MessagesComponent
+    MessagesComponent,
+    LoginComponent
   ],
   exports: [
     NavBarComponent,
