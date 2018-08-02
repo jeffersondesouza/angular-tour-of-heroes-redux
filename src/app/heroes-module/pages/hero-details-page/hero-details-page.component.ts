@@ -6,7 +6,10 @@ import { Store } from '@ngrx/store';
 
 import { Hero } from './../../../hero';
 
-import { RootStoreState } from '../../../state-manegment';
+import {
+  RootStoreState,
+  UpdateHeroRequestAction
+} from '../../../state-manegment';
 
 
 @Component({
@@ -27,20 +30,12 @@ export class HeroDetailsPageComponent implements OnInit {
     this.hero$ = this.store.select('heroes').map(state => state.selectedHero);
   }
 
-  getHero(): void {
-    /*
-        const id = +this.route.snapshot.paramMap.get('id');
-        this.heroService.getHero(id)
-          .subscribe(hero => this.hero = hero); */
-  }
-
-  goBack(): void {
+  onGoBack(): void {
     this.location.back();
   }
 
-  save(): void {
-    /*  this.heroService.updateHero(this.hero)
-       .subscribe(() => this.goBack()); */
+  onHeroSaved(heroSaved: Hero) {
+    this.store.dispatch(new UpdateHeroRequestAction(heroSaved));
   }
 }
 

@@ -1,5 +1,7 @@
 <div>
-  <app-hero-detail-ui [hero]="(hero$ | async)"></app-hero-detail-ui>
-  <button (click)="goBack()">go back</button>
-  <button (click)="save()">save</button>
+  <app-hero-detail-ui
+    [hero]="(hero$ | async)"
+    (heroSaved)="onHeroSaved($event)"
+    (goBack)="onGoBack($event)">
+  </app-hero-detail-ui>
 </div>

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 import { Hero } from '../../../../hero';
 
@@ -9,4 +9,16 @@ import { Hero } from '../../../../hero';
 })
 export class HeroDetailComponent {
   @Input() hero: Hero;
+
+  @Output() goBack: EventEmitter<boolean> = new EventEmitter();
+  @Output() heroSaved: EventEmitter<Hero> = new EventEmitter();
+
+  onGoBack() {
+    this.goBack.emit(true);
+  }
+
+  onSave() {
+    this.heroSaved.emit(this.hero);
+  }
+
 }

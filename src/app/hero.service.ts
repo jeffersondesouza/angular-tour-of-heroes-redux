@@ -36,7 +36,6 @@ export class HeroService {
   }
 
   updateHero(hero: Hero): Observable<any> {
-
     const httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };

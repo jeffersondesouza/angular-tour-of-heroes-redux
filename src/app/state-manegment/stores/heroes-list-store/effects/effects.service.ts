@@ -47,7 +47,14 @@ export class HeroListEffectsService {
       catchError(error => Observable.of(new fromHeroListAction.LoadHeroFailureAction({ error })))
     );
 
-
+  @Effect()
+  updateHeroRequest: Observable<Action> = this.actions$
+    .ofType(fromHeroListAction.UPDATE_HERO_REQUEST_ACTION)
+    .switchMap((action: fromHeroListAction.UpdateHeroRequestAction) => this.apiDataFetcher.updateHero(action.payload))
+    .pipe(
+      map(hero => new fromHeroListAction.UpdateHeroSuccessAction()),
+      catchError(error => Observable.of(new fromHeroListAction.UpdateHeroFailureAction({ error })))
+    );
 
 
   constructor(

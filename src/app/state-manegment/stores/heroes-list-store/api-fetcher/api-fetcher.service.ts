@@ -50,6 +50,17 @@ export class HeroListApiFetcherService {
     );
   }
 
+  updateHero(hero: Hero): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    };
+    return this.http.put(this.heroesUrl, hero, httpOptions).pipe(
+      tap(_ => this.log(`updated hero id=${hero.id}`)),
+      catchError(this.handleError<any>('updateHero'))
+    );
+  }
+
+
 
   private log(message: string) {
     this.messageService.add(`HeroService: ${message}`);
