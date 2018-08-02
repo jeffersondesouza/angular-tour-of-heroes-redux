@@ -1,3 +1,9 @@
 <h3>Top Heroes</h3>
-<app-dashboard-heroes-list [heroes]="heroes"></app-dashboard-heroes-list>
+
+<app-dashboard-heroes-list
+  [heroes]="(heroes$ | async)"
+  [isLoading]="(isLoading$ | async)">
+</app-dashboard-heroes-list>
 <app-hero-search></app-hero-search>
+
+

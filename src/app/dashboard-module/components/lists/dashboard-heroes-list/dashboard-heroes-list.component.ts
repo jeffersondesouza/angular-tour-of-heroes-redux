@@ -9,6 +9,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class DashboardHeroesListComponent implements OnInit {
 
   @Input() heroes: Hero[];
+  @Input() isLoading: boolean;
 
   constructor() { }
 
