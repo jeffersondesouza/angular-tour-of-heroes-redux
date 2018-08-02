@@ -1,3 +1,4 @@
+import { LOAD_HERO_REQUEST_ACTION, LOAD_HERO_SUCCESS_ACTION } from './../actions/index';
 
 import * as fromState from './../state';
 import * as ActionsTypes from './../actions';
@@ -60,6 +61,21 @@ export function heroesReducer(state = fromState.initialState, action: ActionsTyp
       return {
         ...state,
         isSavingHero: false
+      };
+
+    case ActionsTypes.LOAD_HERO_REQUEST_ACTION:
+      return {
+        ...state,
+        selectedHero: null
+      };
+    case ActionsTypes.LOAD_HERO_SUCCESS_ACTION:
+      return {
+        ...state,
+        selectedHero: action.payload
+      };
+    case ActionsTypes.LOAD_HERO_FAILURE_ACTION:
+      return {
+        ...state,
       };
 
     default:

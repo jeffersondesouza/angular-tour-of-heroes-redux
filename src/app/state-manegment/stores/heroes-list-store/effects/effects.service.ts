@@ -1,4 +1,3 @@
-import { DeleteSuccessAction } from './../actions/index';
 import { Injectable } from '@angular/core';
 
 import { Action } from '@ngrx/store';
@@ -26,7 +25,6 @@ export class HeroListEffectsService {
       )
     );
 
-
   @Effect()
   deleteHeroRequest: Observable<Action> = this.actions$
     .ofType(fromHeroListAction.DELETE_REQUEST_ACTION)
@@ -38,6 +36,17 @@ export class HeroListEffectsService {
       ]),
       catchError(error => Observable.of(new fromHeroListAction.DeleteFailureAction({ error })))
     );
+
+
+  @Effect()
+  loadHeroRequest: Observable<Action> = this.actions$
+    .ofType(fromHeroListAction.LOAD_HERO_REQUEST_ACTION)
+    .switchMap((action: fromHeroListAction.LoadHeroRequesAction) => this.apiDataFetcher.getHero(action.payload))
+    .pipe(
+      map(hero => new fromHeroListAction.LoadHeroSuccesAction(hero)),
+      catchError(error => Observable.of(new fromHeroListAction.LoadHeroFailureAction({ error })))
+    );
+
 
 
 

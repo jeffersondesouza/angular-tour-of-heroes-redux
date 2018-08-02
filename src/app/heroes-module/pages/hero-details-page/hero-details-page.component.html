@@ -1,5 +1,5 @@
-<div *ngIf="hero">
-  <app-hero-detail-ui [hero]="hero"></app-hero-detail-ui>
+<div>
+  <app-hero-detail-ui [hero]="(hero$ | async)"></app-hero-detail-ui>
   <button (click)="goBack()">go back</button>
   <button (click)="save()">save</button>
 </div>

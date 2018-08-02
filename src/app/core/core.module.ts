@@ -1,3 +1,4 @@
+import { LoadHeroResolverService } from './../shared/services/load-hero-resolver/load-hero-resolver.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
@@ -33,6 +34,7 @@ import { LoginComponent } from './components/login/login.component';
   ],
   providers: [
     HeroListApiFetcherService,
+    LoadHeroResolverService
   ]
 })
 export class CoreModule { }
