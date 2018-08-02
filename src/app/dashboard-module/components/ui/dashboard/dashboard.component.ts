@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs/Observable';
 import { Store } from '@ngrx/store';
 import { Component, OnInit } from '@angular/core';
 import { Hero } from '../../../../hero';
@@ -15,9 +16,8 @@ import {
 })
 export class DashboardComponent implements OnInit {
 
-  heroes: Hero[];
-  heroes$;
-  isLoading$;
+  heroes$: Observable<Hero[]>;
+  isLoading$: Observable<boolean>;
 
   constructor(
     private store: Store<RootStoreState.AppState>
@@ -34,7 +34,4 @@ export class DashboardComponent implements OnInit {
     this.store.dispatch(new LoadHeroesRequesAction());
   }
 
-  private selectFirstsHeroes(heroes) {
-    return heroes.slice(1, 5);
-  }
 }
