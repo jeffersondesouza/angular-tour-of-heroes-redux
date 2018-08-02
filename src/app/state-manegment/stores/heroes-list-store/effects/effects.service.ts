@@ -1,9 +1,10 @@
+import { DeleteSuccessAction } from './../actions/index';
 import { Injectable } from '@angular/core';
 
 import { Action } from '@ngrx/store';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { Observable } from 'rxjs/Observable';
-import { catchError, map, startWith, switchMap } from 'rxjs/operators';
+import { catchError, map, startWith, switchMap, tap } from 'rxjs/operators';
 
 import * as fromHeroListAction from './../actions';
 import { HeroListApiFetcherService } from './../api-fetcher/api-fetcher.service';
@@ -30,7 +31,15 @@ export class HeroListEffectsService {
   deleteHeroRequest: Observable<Action> = this.actions$
     .ofType(fromHeroListAction.DELETE_REQUEST_ACTION)
     .switchMap((action: fromHeroListAction.DeleteHeroRequestAction) => this.apiDataFetcher.deleteHero(action.payload))
-    .map(res => new fromHeroListAction.LoadHeroesRequesAction());
+    .pipe(
+      switchMap(res => [
+        new fromHeroListAction.LoadHeroesRequesAction(),
+        new fromHeroListAction.DeleteSuccessAction()
+      ]),
+      catchError(error => Observable.of(new fromHeroListAction.DeleteFailureAction({ error })))
+    );
+
+
 
   constructor(
     private actions$: Actions,

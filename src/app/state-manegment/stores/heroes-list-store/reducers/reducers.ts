@@ -43,6 +43,25 @@ export function heroesReducer(state = fromState.initialState, action: ActionsTyp
         ...state,
         isDeletingHero: false,
       };
+
+    case ActionsTypes.CREATE_HERO_REQUEST_ACTION:
+      return {
+        ...state,
+        isSavingHero: true
+      };
+
+    case ActionsTypes.CREATE_HERO_SUCCESS_ACTION:
+      return {
+        ...state,
+        isSavingHero: false
+      };
+
+    case ActionsTypes.CREATE_HERO_FAILURE_ACTION:
+      return {
+        ...state,
+        isSavingHero: false
+      };
+
     default:
       return state;
   }
