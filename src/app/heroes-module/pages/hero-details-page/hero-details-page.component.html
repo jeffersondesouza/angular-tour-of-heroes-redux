@@ -1,0 +1,7 @@
+<div>
+  <app-hero-detail-ui
+    [hero]="(hero$ | async)"
+    (heroSaved)="onHeroSaved($event)"
+    (goBack)="onGoBack($event)">
+  </app-hero-detail-ui>
+</div>

@@ -1,22 +1,51 @@
+import { environment } from './../environments/environment';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
+import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/map';
+
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { AppComponent } from './app.component';
-import { HeroesComponent } from './heroes/heroes.component';
+import { HeroService } from './hero.service';
+import { MessageService } from './message.service';
+import { AppRoutingModule } from './/app-routing.module';
+
+
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryDataService } from './in-memory-data.service';
+import { CoreModule } from './core/core.module';
+
+// import { reducers, effects } from './state-manegment';
+import { RootStoreModule } from './state-manegment';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeroesComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    AppRoutingModule,
+    HttpClientModule,
+
+    HttpClientInMemoryWebApiModule.forRoot(
+      InMemoryDataService, { dataEncapsulation: false }
+    ),
+/*     StoreModule.forRoot(reducers),
+    EffectsModule.forRoot(effects), */
+    !environment.production ? StoreDevtoolsModule.instrument() : [],
+    // StoreRouterConnectingModule,
+    CoreModule,
+    RootStoreModule,
   ],
-  providers: [],
+  providers: [HeroService, MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
